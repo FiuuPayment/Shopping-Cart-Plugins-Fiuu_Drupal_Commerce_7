@@ -1,5 +1,5 @@
 
-Razer Merchant Services Drupal Plugin
+[Shopping Cart Plugins] – RazerMS Drupal Commerce 7 
 ==================
 
 <img src="https://user-images.githubusercontent.com/38641542/74416364-04b56a80-4e80-11ea-977e-b5b857305ee6.jpg">
