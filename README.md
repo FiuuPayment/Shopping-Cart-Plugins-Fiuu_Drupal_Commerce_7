@@ -10,7 +10,7 @@ Razer Merchant Services Plugin for Drupal Shopping Cart developed by Razer Merch
 Notes
 -----
 
-MOLPay Sdn. Bhd. is not responsible for any problems that might arise from the use of this module. 
+Razer Merchant Services is not responsible for any problems that might arise from the use of this module. 
 Use at your own risk. Please backup any critical data before proceeding. For any query or 
 assistance, please email suppor-sa@razer.com
 

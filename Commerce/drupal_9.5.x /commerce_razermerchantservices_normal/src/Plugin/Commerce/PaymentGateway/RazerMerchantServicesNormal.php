@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\commerce_molpay_normal\Plugin\Commerce\PaymentGateway;
+namespace Drupal\commerce_razermerchantservices_normal\Plugin\Commerce\PaymentGateway;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayBase;
@@ -7,19 +7,19 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Provides the MOLPay Normal Checkout payment gateway.
- * @link https://github.com/MOLPay/Drupal_Plugin
+ * Provides the Razer Merchant Services Normal Checkout payment gateway.
+ * @link https://github.com/RazerMS/Shopping-Cart-Plugins-RazerMS_Drupal_Commerce_7
  *
  * @CommercePaymentGateway(
- *   id = "commerce_molpay_normal",
- *   label = "MOLPay Normal Payment Gateway",
- *   display_label = "MOLPay",
+ *   id = "commerce_razermerchantservices_normal",
+ *   label = "Razer Merchant Services Normal Payment Gateway",
+ *   display_label = "Razer Merchant Services",
  *    forms = {
- *     "offsite-payment" = "Drupal\commerce_molpay_normal\PluginForm\MOLPayNormalPaymentForm"
+ *     "offsite-payment" = "Drupal\commerce_razermerchantservices_normal\PluginForm\RazerMerchantServicesNormalPaymentForm"
  *   }
  * )
  */
-class MOLPayNormal extends OffsitePaymentGatewayBase {
+class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 
 	/**
 	* For first time activation, default admin configuration value
@@ -46,7 +46,7 @@ class MOLPayNormal extends OffsitePaymentGatewayBase {
 		$form['merchant_id'] = [
 		'#type' => 'textfield',
 		'#title' => $this->t('Merchant ID'),
-		'#description' => $this->t('Merchant ID can be obtained from MOLPay Support team.'),
+		'#description' => $this->t('Merchant ID can be obtained from Razer Merchant Services Support team.'),
 		'#default_value' => $this->configuration['merchant_id'],
 		'#required' => TRUE,
 		];
@@ -54,7 +54,7 @@ class MOLPayNormal extends OffsitePaymentGatewayBase {
 		$form['verify_key'] = [
 		'#type' => 'textfield',
 		'#title' => $this->t('Verify key'),
-		'#description' => $this->t('Verify key can be obtained from MOLPay Support team.'),
+		'#description' => $this->t('Verify key can be obtained from Razer Merchant Services Support team.'),
 		'#default_value' => $this->configuration['verify_key'],
 		'#required' => TRUE,
 		];
@@ -62,7 +62,7 @@ class MOLPayNormal extends OffsitePaymentGatewayBase {
 		$form['secret_key'] = [
 		'#type' => 'textfield',
 		'#title' => $this->t('Secret key'),
-		'#description' => $this->t('Secret key can be obtained from MOLPay Support team.'),
+		'#description' => $this->t('Secret key can be obtained from Razer Merchant Services Support team.'),
 		'#default_value' => $this->configuration['secret_key'],
 		'#required' => TRUE,
 		];

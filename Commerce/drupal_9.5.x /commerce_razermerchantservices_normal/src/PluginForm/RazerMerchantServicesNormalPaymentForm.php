@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\commerce_molpay_normal\PluginForm;
+namespace Drupal\commerce_razermerchantservices_normal\PluginForm;
 
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm as BasePaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
 
-class MOLPayNormalPaymentForm extends BasePaymentOffsiteForm {
+class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 	
 	/**
 	* {@inheritdoc}
@@ -15,7 +15,7 @@ class MOLPayNormalPaymentForm extends BasePaymentOffsiteForm {
 		$countries = \Drupal\Core\Locale\CountryManager::getStandardList();
 		/** @var \Drupal\commerce_payment\Entity\PaymentInterface $payment */
 		$payment = $this->entity;
-		/** @var \Drupal\commerce_molpay_normal\Plugin\Commerce\PaymentGateway\MOLPayNormalInterface $payment_gateway_plugin */
+		/** @var \Drupal\commerce_razermerchantservices_normal\Plugin\Commerce\PaymentGateway\RazerMerchantServicesNormalInterface $payment_gateway_plugin */
 		$payment_gateway_plugin = $payment->getPaymentGateway()->getPlugin();
 		$gateway_configuration = $payment_gateway_plugin->getConfiguration();
 		$mode = $gateway_configuration['mode'];

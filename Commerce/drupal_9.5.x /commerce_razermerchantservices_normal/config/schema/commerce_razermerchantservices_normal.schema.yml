@@ -1,5 +1,5 @@
-# config/schema/commerce_molpay_normal.schema.yml
-commerce_payment.commerce_payment_gateway.plugin.molpay_normal:
+# config/schema/commerce_razermerchantservices_normal.schema.yml
+commerce_payment.commerce_payment_gateway.plugin.razermerchantservices_normal:
   type: commerce_payment_gateway_configuration
   mapping:
     merchant_id:
