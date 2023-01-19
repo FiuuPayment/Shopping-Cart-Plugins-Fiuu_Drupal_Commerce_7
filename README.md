@@ -20,7 +20,7 @@ Installations
 
 - [Drupal version 7.x.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-7.x.x-and-above)
 - [Drupal version 8.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-8.x-and-above)
-
+- [Drupal version 9.5.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-9.5.x-and-above)
 
 Contribution
 ------------
