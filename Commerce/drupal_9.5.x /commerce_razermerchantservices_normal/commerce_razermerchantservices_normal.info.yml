@@ -6,5 +6,6 @@ dependencies:
   - commerce:commerce_payment
 
 version: '9.5.0'
+core_version_requirement: ^9
 project: 'commerce_razermerchantservices_normal'
 datestamp: 1538538851
