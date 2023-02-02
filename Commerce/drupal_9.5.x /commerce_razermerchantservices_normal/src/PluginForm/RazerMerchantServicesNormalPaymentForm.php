@@ -45,7 +45,7 @@ class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 			'bill_desc' => $bill_desc,
 			'currency' => $payment->getAmount()->getCurrencyCode(),
 			'country' => $billingprofile->country_code,
-			'vcode' => md5($data['amount'].$merchantid.$data['orderid'].$verifykey),
+			'vcode' => md5(number_format((float)$payment->getAmount()->getNumber(), 2, '.', '').$merchantid.$payment->getOrderId().$verifykey),
 			'returnurl' =>  $form['#return_url'],
 			'callbackurl' =>  $form['#return_url'],
 			'notifyurl' => $form['#return_url'],
