@@ -96,24 +96,30 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 			$nbcb = $_POST['nbcb'];
 			$_POST['treq'] = 1;
 		}
-		if($nbcb == 1) {
-			echo "CBTOKEN:MPSTATOK";
-		} elseif($nbcb == 2) {
-			foreach($_POST as $k => $v) {
-				$postData[]= $k."=".$v;
-			}
-			$postdata   = implode("&",$postData);
-			$url        = $host."MOLPay/API/chkstat/returnipn.php";
-			$ch         = curl_init();
-			curl_setopt($ch, CURLOPT_POST           , 1     );
-			curl_setopt($ch, CURLOPT_POSTFIELDS     , $postdata );
-			curl_setopt($ch, CURLOPT_URL            , $url );
-			curl_setopt($ch, CURLOPT_HEADER         , 1  );
-			curl_setopt($ch, CURLINFO_HEADER_OUT    , TRUE   );
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1  );
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER , FALSE);
-			$result = curl_exec( $ch );
-			curl_close( $ch );
+
+        $postData = [];		
+		foreach($_POST as $k => $v) {
+		    $postData[]= $k."=".$v;
+	    }
+	    \Drupal::logger('rms.return')->notice(print_r($postData,1));
+	    
+		if(isset($nbcb)) {
+		    if($nbcb == 1) {
+			    echo "CBTOKEN:MPSTATOK";
+		    } elseif($nbcb == 2) {
+			    $postdata   = implode("&",$postData);
+			    $url        = $host."MOLPay/API/chkstat/returnipn.php";
+			    $ch         = curl_init();
+			    curl_setopt($ch, CURLOPT_POST           , 1     );
+			    curl_setopt($ch, CURLOPT_POSTFIELDS     , $postdata );
+			    curl_setopt($ch, CURLOPT_URL            , $url );
+			    curl_setopt($ch, CURLOPT_HEADER         , 1  );
+			    curl_setopt($ch, CURLINFO_HEADER_OUT    , TRUE   );
+			    curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1  );
+			    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER , FALSE);
+			    $result = curl_exec( $ch );
+			    curl_close( $ch );
+		    }
 		}
 		
 		$tranID = $_POST['tranID']; 
@@ -148,7 +154,7 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 						'payment_gateway_mode' => $this->configuration['mode'],
 						'order_id' => $order->id(),
 						'remote_id' => $tranID,
-						'remote_state' => implode("\n",$postData)
+						'remote_state' => substr(implode("\n",$postData), 0, 252) . "..."
 					]);
 			$payment->save();
 			$messenger->addMessage('Payment was processed for order '.$order->id());
@@ -160,7 +166,7 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 						'payment_gateway_mode' => $this->configuration['mode'],
 						'order_id' => $order->id(),
 						'remote_id' => $tranID,
-						'remote_state' => implode("\n",$postData)
+						'remote_state' => substr(implode("\n",$postData), 0, 252) . "..."
 					]);
 			$payment->save();
 			$messenger->addMessage('Pending payment for order '.$order->id(),'warning');
@@ -172,7 +178,7 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 						'payment_gateway_mode' => $this->configuration['mode'],
 						'order_id' => $order->id(),
 						'remote_id' => $tranID,
-						'remote_state' => implode("\n",$postData)
+						'remote_state' => substr(implode("\n",$postData), 0, 252) . "..."
 					]);
 			$payment->save();
 			$order->set('state','canceled');
