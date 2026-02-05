@@ -27,7 +27,7 @@ class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 			$url = "https://sandbox-payment.fiuu.com/MOLPay/pay/".$merchantid."/";
 		}
 		elseif ($mode == 'live') {
-			$url = "https://www.pay.fiuu.com/MOLPay/pay/".$merchantid."/";
+			$url = "https://pay.fiuu.com/MOLPay/pay/".$merchantid."/";
 		}
 		$order = $payment->getOrder();
 		$bill_desc="";

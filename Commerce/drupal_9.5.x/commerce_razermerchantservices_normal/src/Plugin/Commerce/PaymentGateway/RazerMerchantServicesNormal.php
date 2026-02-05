@@ -98,7 +98,7 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 		if($this->configuration['mode'] == "test") {
 			$host = "https://sandbox-payment.fiuu.com/";
 		} else {
-			$host = "https://www.pay.fiuu.com/";
+			$host = "https://pay.fiuu.com/";
 		}
 		$verify_key = $this->configuration['verify_key'];
 		
