@@ -21,11 +21,13 @@ class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 		$mode = $gateway_configuration['mode'];
 		$merchantid = $gateway_configuration['merchant_id'];
 		$verifykey = $gateway_configuration['verify_key'];
+		$extended_vcode = $gateway_configuration['extended_vcode'];
+
 		if($mode == 'test') {
-			$url = "https://sandbox.merchant.razer.com/MOLPay/pay/".$merchantid."/";
+			$url = "https://sandbox-payment.fiuu.com/MOLPay/pay/".$merchantid."/";
 		}
 		elseif ($mode == 'live') {
-			$url = "https://www.onlinepayment.com.my/MOLPay/pay/".$merchantid."/";
+			$url = "https://www.pay.fiuu.com/MOLPay/pay/".$merchantid."/";
 		}
 		$order = $payment->getOrder();
 		$bill_desc="";
@@ -35,6 +37,12 @@ class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 
 		$billingprofile = $order->getBillingProfile()->get('address');
 		$bill_address = $billingprofile->organization." ".$billingprofile->address_line1." ".$billingprofile->address_line2." ".$billingprofile->postal_code." ".$billingprofile->administrative_area." ".$countries[$billingprofile->country_code];
+		
+		$vcode = md5(number_format((float)$payment->getAmount()->getNumber(), 2, '.', '').$merchantid.$payment->getOrderId().$verifykey);
+		if ($extended_vcode == 1) {
+			$vcode = md5(number_format((float)$payment->getAmount()->getNumber(), 2, '.', '').$merchantid.$payment->getOrderId().$verifykey.$payment->getAmount()->getCurrencyCode());
+		}
+		
 		$data = array(
 			'amount' => number_format((float)$payment->getAmount()->getNumber(), 2, '.', ''),
 			'orderid' => $payment->getOrderId(),
@@ -45,7 +53,7 @@ class RazerMerchantServicesNormalPaymentForm extends BasePaymentOffsiteForm {
 			'bill_desc' => $bill_desc,
 			'currency' => $payment->getAmount()->getCurrencyCode(),
 			'country' => $billingprofile->country_code,
-			'vcode' => md5(number_format((float)$payment->getAmount()->getNumber(), 2, '.', '').$merchantid.$payment->getOrderId().$verifykey),
+			'vcode' => $vcode,
 			'returnurl' =>  $form['#return_url'],
 			'callbackurl' =>  $form['#return_url'],
 			'notifyurl' => $form['#return_url'],

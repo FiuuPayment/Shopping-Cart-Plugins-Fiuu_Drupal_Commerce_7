@@ -11,3 +11,6 @@ commerce_payment.commerce_payment_gateway.plugin.razermerchantservices_normal:
     secret_key:
       type: string
       label: 'Secret Key'
+    extended_vcode:
+      type: boolean
+      label: 'Extended VCode'
