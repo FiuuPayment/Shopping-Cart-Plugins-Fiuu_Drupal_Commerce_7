@@ -30,6 +30,7 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 		'merchant_id' => '',
 		'verify_key' => '',
 		'secret_key' => '',
+		'extended_vcode' => 0
 		] + parent::defaultConfiguration();
 	}
 	
@@ -67,6 +68,14 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 		'#required' => TRUE,
 		];
 
+		$form['extended_vcode'] = [
+		'#type' => 'checkbox',
+		'#title' => $this->t('<strong>Extended VCode</strong>'),
+		'#description' => $this->t('Please tick if you have enabled multi currency channels in your Razer Merchant Services Merchant Profile.'),
+		'#default_value' => $this->configuration['extended_vcode'],
+		'#required' => FALSE,
+		];
+
 		return $form;
 	}
 
@@ -82,13 +91,14 @@ class RazerMerchantServicesNormal extends OffsitePaymentGatewayBase {
 		$this->configuration['merchant_id'] = $values['merchant_id'];
 		$this->configuration['verify_key'] = $values['verify_key'];
 		$this->configuration['secret_key'] = $values['secret_key'];
+		$this->configuration['extended_vcode'] = $values['extended_vcode'];
 	}
 	
 	public function onReturn(OrderInterface $order, Request $request) {
 		if($this->configuration['mode'] == "test") {
-			$host = "https://sandbox.merchant.razer.com/";
+			$host = "https://sandbox-payment.fiuu.com/";
 		} else {
-			$host = "https://www.onlinepayment.com.my/";
+			$host = "https://pay.fiuu.com/";
 		}
 		$verify_key = $this->configuration['verify_key'];
 		
