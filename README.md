@@ -4,7 +4,7 @@
 
 <img src="https://user-images.githubusercontent.com/38641542/74416364-04b56a80-4e80-11ea-977e-b5b857305ee6.jpg">
 
-Razer Merchant Services Plugin for Drupal Shopping Cart developed by Razer Merchant Services R&D team.
+Fiuu Plugin for Drupal Shopping Cart developed by Fiuu R&D team.
 
 
 Notes
@@ -18,9 +18,9 @@ assistance, please email support@fiuu.com
 Installations
 ------------------------------------------------------
 
-- [Drupal version 7.x.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-7.x.x-and-above)
-- [Drupal version 8.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-8.x-and-above)
-- [Drupal version 9.5.x and above](https://github.com/RazerMS/Drupal_Plugin/wiki/Drupal-9.5.x-and-above)
+- [Drupal version 7.x.x and above](https://github.com/FiuuPayment/Shopping-Cart-Plugins-Fiuu_Drupal_Commerce_7/wiki/Drupal-7.x.x-and-above)
+- [Drupal version 8.x and above](https://github.com/FiuuPayment/Shopping-Cart-Plugins-Fiuu_Drupal_Commerce_7/wiki/Drupal-8.x-and-above)
+- [Drupal version 9.5.x and above](https://github.com/FiuuPayment/Shopping-Cart-Plugins-Fiuu_Drupal_Commerce_7/wiki/Drupal-9.5.x-and-above)
 
 Contribution
 ------------
